@@ -19,7 +19,7 @@ def getAllImagesAndFavouriteList(search_msg, request):
 # si el opcional de favoritos no está desarrollado, devuelve un listado vacío.
 def home(request):
     images = services.getAllImages()
-    favourite_list = []
+    favourite_list = services.getAllFavourites(request)
     return render(request, 'home.html', { 'images': images, 'favourite_list': favourite_list })
 
 def search(request):
@@ -32,7 +32,7 @@ def search(request):
 # Estas funciones se usan cuando el usuario está logueado en la aplicación.
 @login_required
 def getAllFavouritesByUser(request):
-    favourite_list = services.getAllFavouritesByUser(request)
+    favourite_list = services.getAllFavourites(request)
     return render(request, 'favourites.html', { 'favourite_list': favourite_list })
 
 @login_required
@@ -42,7 +42,7 @@ def saveFavourite(request):
 
 @login_required
 def deleteFavourite(request):
-    services.deleteFavourite
+    services.deleteFavourite(request)
     return redirect("/favourites")
 
 @login_required
