@@ -38,12 +38,12 @@ def getAllFavouritesByUser(request):
 @login_required
 def saveFavourite(request):
     services.saveFavourite(request)
-    return redirect("/buscar")
+    return redirect("home")
 
 @login_required
 def deleteFavourite(request):
     services.deleteFavourite(request)
-    return redirect("/favourites")
+    return redirect("favoritos")
 
 @login_required
 def exit(request):
